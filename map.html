@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/mapstyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" crossorigin=""/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" crossorigin=""></script> 
+    <script src="assets/scripts/vendor/pouchdb-7.2.2.js"></script>
+    <script src="https://unpkg.com/pouchdb@7.2.2/dist/pouchdb.find.js" crossorigin=""></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Cookies.js/1.2.1/cookies.js" crossorigin=""></script> 
+
+    <title>Foodo</title>
+    <script>
+      // AUTHORIZATION ACCESS OR BAN
+
+      let $AUTH = new URLSearchParams(window.location.search).get("auth");
+      let meta = document.createElement("meta");
+      meta.httpEquiv = "refresh";
+      meta.content = "0;url=login.html?redirect=2"; // FF @ 80.0.1 tarvitsee HTML pakotuksen
+
+      if($AUTH == null){
+        window.location.href = "login.html?redirect=2";
+        document.head.appendChild(meta);
+      }
+      fetch("assets/scripts/auth.json").then((auth) => {
+          return auth.json();
+      }).then((auth) => {
+          if($AUTH != auth.auth){
+            window.location.href = "login.html?redirect=2";
+            document.head.appendChild(meta);
+          }
+      });
+    </script>
+  </head>
+  <body>
+
+    <!-- Header -->
+    <header>
+      <div class="nav-bar">
+        <a href ="/">
+          <div class="nav-logo">
+            <img src="./assets/img/logo-title.svg" />
+          </div>
+        </a>
+
+        <div class="nav-links">
+          <a class="nav-selector" href="#">Syö</a>
+          <a class="nav-selector" href="#">Myy</a>
+          <a class="nav-selector" href="#">Kirjaudu</a>
+          <a class="nav-selector" href="#">Meistä</a>
+        </div>
+
+        <div class="burger">
+          Menu
+        </div>
+
+
+      </div>
+    </header>
+
+    
+  
+    
+     <!-- Side Widget -->
+     <div class="col col-container">
+        <div style="height:100vh;" class="row">
+
+          <div class="col col-small-4 light">
+            <div class="widget">
+
+              <p class="center-text">Tarjouksia alueella</p>
+
+
+              <!-- 
+                <div class="card fluid">
+
+                  <div class="card-header">
+                    <b>Omistaja</b>
+                    <span class="subtitle">Etäisyys</span>
+                  </div>
+              
+                  <ul class="list-group">
+                    <li class="list-group-item" id="1016">
+                
+                        Ateria
+                
+                        <span class="badge badge-primary right"> hinta </span>
+                        <div class="badge right fa fa-shop" id="purchasable"></div>
+                    </li>
+                  </ul>
+              </div> 
+              -->
+  
+        
+            </div>
+
+          </div>
+
+           <!-- Kartta -->
+          <div class="col-medium flatten">
+            <div id="mapid"></div>
+
+          </div>
+
+          
+
+          
+        </div>
+        
+        
+    </div>
+
+
+     <!-- Checkout fluid -->
+     
+   
+      <div style="display:none;" class="col col-small-4 round" id="checkout">
+
+        <ul class="list-group">
+          <li class="list-group-item">
+            <p class="fa fa-cart">
+              Ostoskorissa on  <span class="badge badge-dark pill">0</span> ateriaa
+            </p>
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Checkout tooltip-->
+      <span class="tooltip">
+        <div class="col small container">
+        </div>
+
+
+        <span class="longline dark"></span>
+        <span class="responsive">Siirry kassalle</span>
+      
+      </span>
+
+   
+
+
+    <script src="./assets/scripts/map_control.js"></script> 
+  </body>
+</html>

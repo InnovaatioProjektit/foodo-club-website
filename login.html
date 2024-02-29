@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="assets/cart.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Login</title>
+  </head>
+  <body class="body__login">
+
+    <header class="header">
+      <div class="bar__login">
+        <a href="/">
+          <img style="width:90px; margin: 4px 0;"  src="./assets/img/logo-title-light.svg" />
+        </a>
+      </div>
+    </header>
+
+    <div class="container--login">
+      <form class="form">
+        <h2 class="form__header">Partner login</h2>
+        <div class="input__block">
+          <div class="form__text">Partner username</div>
+          <input
+            placeholder="Nimimerkki"
+            id="input_username"
+            class="form__input"
+            type="text"
+          />
+        </div>
+        <div class="input__block">
+          <div class="form__text">Password</div>
+          <input
+            placeholder="*****"
+            id="input_password"
+            class="form__input"
+            type="text"
+          />
+        </div>
+        
+        <button onclick="authorization();" class="login__button" id="signInButton">
+          Kirjaudu
+        </button>
+        
+      </form>
+    </div>
+    <script>
+      let userData = {
+        userName: "admin",
+        userPassword: 12345,
+      };
+
+      function authorization() {
+        let userName = userData.userName;
+        let userPassword = userData.userPassword;
+        event.preventDefault();
+        if (
+          userName == document.getElementById("input_username").value &&
+          userPassword == document.getElementById("input_password").value
+        ) {
+          fetch("assets/scripts/auth.json").then((auth) => {
+            return auth.json();
+            
+          }).then((auth) => {
+            if(new URLSearchParams(window.location.search).get("redirect") == 2){
+              window.location.href = "map.html?auth=" + auth.auth;
+              return;
+
+            }
+            window.location.href = "index.html?auth=" + auth.auth;
+          })
+          
+          
+        } else {
+        }
+      }
+    </script>
+  </body>
+</html>
