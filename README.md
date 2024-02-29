@@ -6,11 +6,11 @@
 We developed a proof-of-concept website of sustainable food service where people can sell and buy food destined to be thrown away. 
 As buyers, the users have access to realtime map with pins to locations where food is available. 
 
-The project delivers a frontend built on vanilla html and javascript with a few open source libraries and a map api. The proof-of-concept shows that simple list of globe coordinates on an embedded map, may function as a user experience and that this capability is possible with usage of localStorage API and interactive map library.
+The project delivers a frontend built on vanilla html and javascript with a few open source libraries and a map api. The proof-of-concept shows that simple list of globe coordinates on an embedded map may function as a user experience and that this capability is possible with usage of localStorage API and interactive map library.
 
 ## Prerequisite
 
-For the interactive map to function, the project requires a map/navigation API access, whether a free or paid. The current project uses `api.mapbox.com` services with authorized token and limited tile download rate.
+For the interactive map to function, the project requires a map/navigation API access, whether free or paid. The current project uses `api.mapbox.com` services with authorized token and limited tile download rate.
 
 ## Stack:
 
