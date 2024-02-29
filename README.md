@@ -27,13 +27,13 @@ The website was developed by vanilla ajax stack.
 <table>
   <tr>
   	<td align="center">
-      <img src="docs/1.jpeg" alt="mainpage" width="400"/>
+      <img src="docs/1.png" alt="mainpage" width="400"/>
     </td>
      <td align="center">
-      <img src="docs/2.jpeg" alt="cartpage" width="400"/>
+      <img src="docs/2.png" alt="cartpage" width="400"/>
     </td>
     <td align="center">
-      <img src="docs/3.jpeg" alt="interactivemap" width="400"/>
+      <img src="docs/3.png" alt="interactivemap" width="400"/>
     </td>
   </tr>
 </table>
